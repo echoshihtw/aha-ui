@@ -21,7 +21,7 @@ const Tags = () => {
         Tags
       </div>
       <div className="w-full grid items-center">
-        <div className="mx-auto px-[25px] sm:px-[257px] w-fit grid items-center grid-cols-[repeat(5,_150px)] gap-x-[24px] gap-y-[36px] pt-[24px]">
+        <div className="mx-auto px-[25px] sm:px-[257px] w-fit grid items-center grid-cols-[repeat(2,_150px)] sm:grid-cols-[repeat(5,_150px)] gap-x-[24px] gap-y-[36px] pt-[24px]">
           {tags?.map((tag) => {
             const { id, name, count } = tag;
             return (
