@@ -20,7 +20,7 @@ const SearchPage: FC<SearchPageProps> = ({
   onSetSliderValue,
   onSearchButtonClick,
 }) => (
-  <div className="h-full">
+  <div className="w-full h-full flex flex-col justify-between">
     <div className="h-full flex flex-col justify-between px-[20px] pb-[28px] sm:pt-[54px] sm:pb-[87px] sm:px-[130px]">
       <div className="flex flex-col sm:gap-[20px]">
         <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">

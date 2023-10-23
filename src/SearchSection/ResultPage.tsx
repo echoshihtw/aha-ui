@@ -13,7 +13,7 @@ const ResultPage: FC<ResultPageProps> = ({ result }) => {
     navigate(-1);
   }, [navigate]);
   return (
-    <div className="w-full py-5 sm:py-[92px]">
+    <div className="w-full h-screen sm:h-full py-5 sm:py-[92px]">
       <div className="hidden sm:flex gap-[25px] pl-[87px]">
         <button className="text-h4" onClick={handleGoToLastPage} type="button">
           <LeftArrow />
@@ -26,7 +26,7 @@ const ResultPage: FC<ResultPageProps> = ({ result }) => {
         results
       </div>
       <div className="w-full p-5 sm:px-[130px]">
-        {result.length === 0 && <div> no result</div>}
+        {result.length === 0 && <div>no result</div>}
         <div className="grid sm:grid-cols-3 gap-10 sm:gap-x-[34px] sm:gap-y-[31px] pt-[24px]">
           {result.length > 0 &&
             result.map((item) => (

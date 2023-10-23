@@ -18,18 +18,16 @@ const SideMenu = () => {
   );
   return (
     <>
-      <nav className="xs:hidden sm:block">
-        <section className="h-screen w-fulll w-[80px] bg-background-light flex flex-col gap-2 ">
-          <div className="w-[80px] h-[88px] grid place-items-center">
-            <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] tracking-[-0.65px]">
-              LOGO
-            </div>
+      <nav className="xs:hidden sm:flex flex-col gap-2 items-center h-screen w-full sm:w-[80px] bg-background-light ">
+        <div className="w-[80px] h-[88px] grid place-items-center">
+          <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] tracking-[-0.65px]">
+            LOGO
           </div>
-          {pages.map((page, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <SideMenuItem key={`${index}-${page.pageTitle}`} page={page} />
-          ))}
-        </section>
+        </div>
+        {pages.map((page, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <SideMenuItem key={`${index}-${page.pageTitle}`} page={page} />
+        ))}
       </nav>
       <div className="sm:hidden">
         <section className="h-[70px] w-full">

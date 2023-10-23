@@ -6,7 +6,7 @@ import Home from './Home';
 import SideMenu from './SideMenu';
 
 const App = () => (
-  <div className="w-full h-screen sm:h-full flex xs:flex-col sm:flex-row sm:justify-between bg-background-main">
+  <div className="w-screen h-screen sm:w-full sm:h-full flex xs:flex-col sm:flex-row sm:justify-between bg-background-main">
     <BrowserRouter>
       <SideMenu />
       <Routes>

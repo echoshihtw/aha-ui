@@ -16,12 +16,12 @@ const Tags = () => {
     });
   }, [setTags]);
   return (
-    <div className="w-full h-full sm:pt-[80px]">
+    <div className="w-full h-full sm:pt-[80px] bg-background-main">
       <div className="px-5 pt-5 sm:pt-0 sm:px-[257px] text-h4 text-white">
         Tags
       </div>
       <div className="w-full grid items-center">
-        <div className="mx-auto px-[25px] sm:px-[257px] w-fit grid items-center grid-cols-[repeat(2,_150px)] sm:grid-cols-[repeat(5,_150px)] gap-x-[24px] gap-y-[36px] pt-[24px]">
+        <div className="px-[25px] sm:px-[257px] w-fit grid items-center grid-cols-[repeat(2,_150px)] sm:grid-cols-[repeat(5,_150px)] gap-x-[24px] gap-y-[36px] py-[24px]">
           {tags?.map((tag) => {
             const { id, name, count } = tag;
             return (
