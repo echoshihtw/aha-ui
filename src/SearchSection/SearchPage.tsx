@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC, memo } from 'react';
 import Slider from './Slider';
 import Divider from './Divider';
+import MobileMenu from '../SideMenu/MobileMenu';
 
 interface SearchPageProps {
   keyword: string;
@@ -70,6 +71,7 @@ const SearchPage: FC<SearchPageProps> = ({
         </button>
       </div>
     </div>
+    <MobileMenu />
   </div>
 );
 
