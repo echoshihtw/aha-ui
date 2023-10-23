@@ -32,6 +32,7 @@ module.exports = {
           600: '#6A6A6A',
         },
         background: {
+          main: '#121212',
           light: '#1B1B1B',
         },
       },
