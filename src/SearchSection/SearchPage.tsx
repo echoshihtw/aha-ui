@@ -39,7 +39,7 @@ const SearchPage: FC<SearchPageProps> = ({
         <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
           # of results per page
         </span>
-        <div className="flex gap-[10px] items-end mb-[24px] sm:mb-0">
+        <div className="flex gap-[10px] items-end mb-[20px] sm:mb-0">
           <span className="leading-[50px] text-h3 font-bold text-white tracking-normal">
             {sliderValue}
           </span>
