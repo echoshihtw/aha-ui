@@ -35,7 +35,7 @@ const SearchSection = () => {
 
   const handleSearchClick = useCallback(() => {
     if (keyword === '') return;
-    navigate(`?keyword=${keyword}`);
+    navigate(`?keyword=${keyword}`, { state: 'search' });
   }, [navigate, keyword]);
 
   const handleKeyDown = useCallback(
