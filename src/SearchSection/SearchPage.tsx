@@ -20,7 +20,7 @@ const SearchPage: FC<SearchPageProps> = ({
   onSearchButtonClick,
 }) => (
   <div className="h-full">
-    <div className="h-full flex flex-col justify-between px-[20px] pb-[24px] sm:pt-[54px] sm:pb-[87px] sm:px-[130px]">
+    <div className="h-full flex flex-col justify-between px-[20px] pb-[28px] sm:pt-[54px] sm:pb-[87px] sm:px-[130px]">
       <div className="flex flex-col sm:gap-[20px]">
         <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
           search
@@ -60,9 +60,7 @@ const SearchPage: FC<SearchPageProps> = ({
         </button>
       </div>
       <div className="sm:hidden">
-        <div className="sm:hidden">
-          <Divider />
-        </div>
+        <Divider />
         <button
           type="button"
           className="flex items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none w-full sm:w-[343px] px-4 py-[13px] mt-20 sm:mt-0"

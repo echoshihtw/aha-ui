@@ -14,7 +14,7 @@ const SideMenuItem: FC<SideMenuItemProps> = ({ page }) => {
   const { pageTitle, icon, route } = page;
   return (
     <a
-      className="btn btn-ghost text-[12px] font-normal leading-[18px] flex items-center justify-center my-[7px] hover:cursor-pointer hover:text-white"
+      className="sm:btn sm:btn-ghost text-[12px] font-normal leading-[18px] flex items-center justify-center sm:my-[7px] hover:cursor-pointer hover:text-white"
       href={route}
     >
       <div className="h-full flex flex-col items-center justify-center">
