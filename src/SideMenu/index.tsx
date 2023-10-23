@@ -26,7 +26,7 @@ const SideMenu = () => (
     <div className="sm:hidden relative">
       <section className="h-[70px] w-full flex flex-col gap-2">
         <div className="w-[80px] h-[88px] pt-[29px] pl-[21px]">
-          <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] tracking-[-0.65px]">
+          <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] h-[15px] tracking-[-0.65px] flex items-center">
             LOGO
           </div>
         </div>
