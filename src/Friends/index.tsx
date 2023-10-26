@@ -16,7 +16,7 @@ const profileIndex: Array<{ title: string; index: number }> = [
   },
 ];
 
-const UserSubscriptionSection = () => {
+const Friends = () => {
   const [selected, setSelected] = useState<number>(FOLLOWERS);
   const [list, setList] = useState<Array<Profile>>([]);
 
@@ -58,4 +58,4 @@ const UserSubscriptionSection = () => {
   );
 };
 
-export default memo(UserSubscriptionSection);
+export default memo(Friends);

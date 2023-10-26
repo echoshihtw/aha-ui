@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import UserSubscriptionSection from './UserSubscriptionSection';
+import UserSubscriptionSection from './Friends';
 import SearchSection from './SearchSection';
 
 const Home = () => (
