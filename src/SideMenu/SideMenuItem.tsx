@@ -25,13 +25,11 @@ const SideMenuItem: FC<SideMenuItemProps> = ({ page }) => {
         >
           {icon}
         </div>
-        <span
-          className={`${
-            location?.pathname === route ? 'text-white' : 'text-grey-600'
-          } capitalize hidden sm:block`}
-        >
-          {pageTitle}
-        </span>
+        {location?.pathname === route && (
+          <span className="text-white capitalize hidden sm:block">
+            {pageTitle}
+          </span>
+        )}
       </div>
     </a>
   );

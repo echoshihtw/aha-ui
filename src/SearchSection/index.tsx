@@ -15,6 +15,7 @@ const SearchSection = () => {
   const [keyword, setKeyword] = useState<string>('');
   const [sliderValue, setSliderValue] = useState<number>(30);
   const [result, setResult] = useState<Array<User>>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const params = new URLSearchParams(document.location.search);
   const keywordFromUrl = params.get('keyword');
@@ -23,7 +24,10 @@ const SearchSection = () => {
   useEffect(() => {
     GET(
       `https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=${sliderValue}&keyword=${keyword}`,
-    ).then((r) => setResult(r.data));
+    ).then((r) => {
+      setResult(r.data);
+      setIsLoading(true);
+    });
   }, [keyword, sliderValue, setResult]);
 
   const handleEnterInput = useCallback(
@@ -47,7 +51,7 @@ const SearchSection = () => {
     [handleSearchClick],
   );
   return (
-    <div className="w-full h-full">
+    <div className="w-full min-h-[calc(100vh-70px)] flex justify-between">
       {keywordFromUrl === null ? (
         <SearchPage
           keyword={keyword}
@@ -58,7 +62,7 @@ const SearchSection = () => {
           onSearchButtonClick={handleSearchClick}
         />
       ) : (
-        <ResultPage result={result} />
+        <ResultPage result={result} isLoading={isLoading} />
       )}
     </div>
   );

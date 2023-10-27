@@ -6,7 +6,7 @@ import { Page } from './interfaces/page.interface';
 
 export const pages: Array<Page> = [
   { pageTitle: 'Home', icon: <MenuItemIcon />, route: '/' },
-  { pageTitle: 'Tags', icon: <MenuItemIcon />, route: '/tags' },
+  { pageTitle: 'TagPage', icon: <MenuItemIcon />, route: '/tags' },
 ];
 
 const SideMenu = () => {
@@ -39,7 +39,7 @@ const SideMenu = () => {
             </div>
           )}
           {!isHomePage && (
-            <div className="flex gap-[13.16px] pl-[19px] pt-[17px]">
+            <div className="flex gap-[13.16px] pl-[19px] pt-[17px] ">
               <button
                 className="text-h4"
                 onClick={() => navigate('/')}

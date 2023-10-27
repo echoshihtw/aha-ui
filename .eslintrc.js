@@ -40,6 +40,8 @@ module.exports = {
     'import/no-named-as-default': 0,
     'import/no-unresolved': 2,
     'object-curly-newline': 0,
+    indent: 'off',
+    '@typescript-eslint/indent': 'off',
     quotes: [0, 'double'],
     'react/function-component-definition': [
       1,

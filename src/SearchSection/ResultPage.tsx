@@ -2,16 +2,28 @@ import React, { FC, memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LeftArrow } from '../assets/customIcon';
 import { User } from './interfaces/user.interface';
+import ResultSkeleton from './ResultItemSkeleton';
+import ResultItem from './ResultItem';
 
 interface ResultPageProps {
   result: Array<User>;
+  isLoading: boolean;
 }
 
-const ResultPage: FC<ResultPageProps> = ({ result }) => {
+const ResultPage: FC<ResultPageProps> = ({ result, isLoading }) => {
   const navigate = useNavigate();
+  const skeleton = Array.from(new Array(10)).map((index) => (
+    <ResultSkeleton key={index} />
+  ));
+
+  const results =
+    result.length > 0 &&
+    result.map((item) => <ResultItem key={item.id} item={item} />);
+
   const handleGoToLastPage = useCallback(() => {
     navigate(-1);
   }, [navigate]);
+
   return (
     <div className="w-full h-screen sm:h-full py-5 sm:py-[92px]">
       <div className="hidden sm:flex gap-[25px] pl-[87px]">
@@ -27,26 +39,8 @@ const ResultPage: FC<ResultPageProps> = ({ result }) => {
       </div>
       <div className="w-full p-5 sm:px-[130px]">
         {result.length === 0 && <div>no result</div>}
-        <div className="grid sm:grid-cols-3 gap-10 sm:gap-x-[34px] sm:gap-y-[31px] pt-[24px]">
-          {result.length > 0 &&
-            result.map((item) => (
-              <div key={item.id}>
-                <img
-                  src={item.avater}
-                  alt={item.name}
-                  className="w-full sm:w-[219px] h-[222.671px] sm:h-[146px] border border-white"
-                />
-                <div className="flex flex-col pt-[20.33px] sm:pt-3">
-                  <span className="text-white text-[14.9px] leading-[22.35px] tracking-[0.14px]">
-                    this is a title
-                  </span>
-                  <span className="text-[11.175px] leading-[16.762px] text-grey-400">
-                    by
-                    {item.username}
-                  </span>
-                </div>
-              </div>
-            ))}
+        <div className="grid sm:grid-cols-[repeat(auto-fill,_minmax(0,_219px))] gap-10 sm:gap-x-[34px] sm:gap-y-[31px] pt-[24px]">
+          {isLoading ? skeleton : results}
         </div>
       </div>
     </div>

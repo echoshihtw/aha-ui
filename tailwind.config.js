@@ -23,6 +23,9 @@ module.exports = {
         subtitle: ['16px', '24px'],
       },
       colors: {
+        primary: {
+          light: '#00D1FF',
+        },
         tutor: {
           main: '#FF9B33',
         },
