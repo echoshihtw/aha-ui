@@ -21,6 +21,7 @@ module.exports = {
         body1: ['16px', '24px'],
         body2: ['14px', '21px'],
         subtitle: ['16px', '24px'],
+        caption: ['12px', ['18px']],
       },
       colors: {
         primary: {

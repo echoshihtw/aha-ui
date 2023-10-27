@@ -26,7 +26,7 @@ const SideMenuItem: FC<SideMenuItemProps> = ({ page }) => {
           {icon}
         </div>
         {location?.pathname === route && (
-          <span className="text-white capitalize hidden sm:block">
+          <span className="text-white capitalize hidden font-normal text-caption sm:block">
             {pageTitle}
           </span>
         )}
