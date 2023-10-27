@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, memo } from 'react';
+import React, { ChangeEvent, FC, memo, useMemo } from 'react';
 import Slider from './Slider';
 import Divider from './Divider';
 import MobileMenu from '../SideMenu/MobileMenu';
@@ -19,60 +19,70 @@ const SearchPage: FC<SearchPageProps> = ({
   sliderValue,
   onSetSliderValue,
   onSearchButtonClick,
-}) => (
-  <div className="w-full flex flex-col justify-between">
-    <div className="flex h-full flex-col justify-between px-[20px] pb-[28px] sm:pt-[54px] sm:pb-[87px] sm:px-[130px]">
-      <div className="flex flex-col sm:gap-[20px]">
-        <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
-          search
-        </span>
-        <input
-          value={keyword}
-          type="text"
-          placeholder="Keyword"
-          className="mb-[28px] sm:mb-0 h-[60px] input border-solid border-[3px] focus:border-tutor-main border-white border-opacity-50 text-body2 px-4 w-full rounded-[6px] bg-transparent placeholder:text-white placeholder:opacity-30 placeholder:tracking-[0.25px] text-white leading-[21px]"
-          onChange={onEnterInput}
-          onKeyDown={onKeyDown}
-        />
-        <div className="hidden sm:block">
-          <Divider />
-        </div>
-        <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
-          # of results per page
-        </span>
-        <div className="flex gap-[10px] items-end mb-[20px] sm:mb-0">
-          <span className="leading-[50px] text-h3 font-bold text-white tracking-normal">
-            {sliderValue}
+}) => {
+  const fixedDefaultValueForSlider = useMemo(() => {
+    // visually decided each mark is 18.8%
+    if (sliderValue === 75.2) {
+      return '30';
+    }
+    return sliderValue;
+  }, [sliderValue]);
+
+  return (
+    <div className="w-full flex flex-col justify-between">
+      <div className="flex h-full flex-col justify-between px-[20px] pb-[28px] sm:pt-[54px] sm:pb-[87px] sm:px-[130px]">
+        <div className="sm:w-[725px] flex flex-col sm:gap-[20px]">
+          <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
+            search
           </span>
-          <div className="text-white text-subtitle tracking-[0.15px] mb-1">
-            results
+          <input
+            value={keyword}
+            type="text"
+            placeholder="Keyword"
+            className="mb-[28px] sm:mb-0 h-[60px] input border-solid border-[3px] focus:border-tutor-main border-white border-opacity-50 text-body2 px-4 w-full rounded-[6px] bg-transparent placeholder:text-white placeholder:opacity-30 placeholder:tracking-[0.25px] text-white leading-[21px]"
+            onChange={onEnterInput}
+            onKeyDown={onKeyDown}
+          />
+          <div className="hidden sm:block">
+            <Divider />
           </div>
+          <span className="text-white text-h5 font-normal capitalize mb-[16px] sm:mb-0">
+            # of results per page
+          </span>
+          <div className="flex gap-[10px] items-end mb-[20px] sm:mb-0">
+            <span className="leading-[50px] text-h3 font-bold text-white tracking-normal">
+              {fixedDefaultValueForSlider}
+            </span>
+            <div className="text-white text-subtitle tracking-[0.15px] mb-1">
+              results
+            </div>
+          </div>
+          <Slider value={sliderValue} onSetSliderValue={onSetSliderValue} />
+          <div className="hidden sm:block">
+            <Divider />
+          </div>
+          <button
+            type="button"
+            className="hidden sm:flex absolute bottom-[87px] items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none sm:w-[343px] px-4 py-[13px]"
+            onClick={onSearchButtonClick}
+          >
+            search
+          </button>
         </div>
-        <Slider value={sliderValue} onSetSliderValue={onSetSliderValue} />
-        <div className="hidden sm:block">
+        <div className="sm:hidden">
           <Divider />
+          <button
+            type="button"
+            className="flex items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none w-full sm:w-[343px] px-4 py-[13px] mt-20 sm:mt-0"
+            onClick={onSearchButtonClick}
+          >
+            search
+          </button>
         </div>
-        <button
-          type="button"
-          className="hidden sm:flex absolute bottom-[87px] items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none sm:w-[343px] px-4 py-[13px]"
-          onClick={onSearchButtonClick}
-        >
-          search
-        </button>
       </div>
-      <div className="sm:hidden">
-        <Divider />
-        <button
-          type="button"
-          className="flex items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none w-full sm:w-[343px] px-4 py-[13px] mt-20 sm:mt-0"
-          onClick={onSearchButtonClick}
-        >
-          search
-        </button>
-      </div>
+      <MobileMenu />
     </div>
-    <MobileMenu />
-  </div>
-);
+  );
+};
 
 export default memo(SearchPage);

@@ -40,23 +40,55 @@ interface SliderProps {
 }
 
 const Slide: FC<SliderProps> = ({ value, onSetSliderValue }) => {
+  // visually decided each mark is 18.8%
+  const step = 18.8;
   const handleChange = useCallback(
-    (_event: Event, newValue: number | number[]) => {
-      onSetSliderValue(newValue as number);
+    (_event: Event, scrollbarPercentage: number | number[]) => {
+      switch (scrollbarPercentage) {
+        case 0:
+          onSetSliderValue(6 as number);
+          break;
+        case step:
+          onSetSliderValue(12 as number);
+          break;
+        case step * 2:
+          onSetSliderValue(18 as number);
+          break;
+        case 56.4: // step * 3
+          onSetSliderValue(24 as number);
+          break;
+        case step * 4:
+          onSetSliderValue(30 as number);
+          break;
+        case 100:
+          onSetSliderValue(100 as number);
+          break;
+        default:
+          break;
+      }
     },
     [onSetSliderValue],
   );
 
   return (
-    <div className="w-fill sm:w-[720px]">
-      <OrangeSlider defaultValue={value} step={3} onChange={handleChange} />
-      <div className="flex text-body1 font-semiboild text-white text-opacity-50">
-        <span className="mr-[124px]">3</span>
-        <span className="mr-[124px]">6</span>
-        <span className="mr-[124px]">9</span>
-        <span className="mr-[115px]">12</span>
-        <span className="mr-[156px]">15</span>
-        <span>50</span>
+    <div className="w-fill sm:w-[725px]">
+      <OrangeSlider
+        defaultValue={value}
+        min={0}
+        step={18.8}
+        onChange={handleChange}
+      />
+      <div className="flex w-full justify-between">
+        <div className="flex w-[237px] sm:w-[541px] text-body1 font-semiboild text-white text-opacity-50">
+          <span className="mr-[49px] sm:mr-[124px]">3</span>
+          <span className="mr-[49px] sm:mr-[124px]">6</span>
+          <span className="mr-[49px] sm:mr-[124px]">9</span>
+          <span className="mr-[40px] sm:mr-[115px]">12</span>
+          <span>15</span>
+        </div>
+        <span className="text-body1 font-semiboild text-white text-opacity-50">
+          50
+        </span>
       </div>
     </div>
   );

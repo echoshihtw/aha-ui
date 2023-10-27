@@ -13,7 +13,7 @@ import { User } from './interfaces/user.interface';
 
 const SearchSection = () => {
   const [keyword, setKeyword] = useState<string>('');
-  const [sliderValue, setSliderValue] = useState<number>(30);
+  const [sliderValue, setSliderValue] = useState<number>(75.2);
   const [result, setResult] = useState<Array<User>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -26,7 +26,7 @@ const SearchSection = () => {
       `https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=${sliderValue}&keyword=${keyword}`,
     ).then((r) => {
       setResult(r.data);
-      setIsLoading(true);
+      setIsLoading(false);
     });
   }, [keyword, sliderValue, setResult]);
 
@@ -62,7 +62,11 @@ const SearchSection = () => {
           onSearchButtonClick={handleSearchClick}
         />
       ) : (
-        <ResultPage result={result} isLoading={isLoading} />
+        <ResultPage
+          result={result}
+          isLoading={isLoading}
+          sliderValue={sliderValue}
+        />
       )}
     </div>
   );

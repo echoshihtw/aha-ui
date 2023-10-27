@@ -8,11 +8,16 @@ import ResultItem from './ResultItem';
 interface ResultPageProps {
   result: Array<User>;
   isLoading: boolean;
+  sliderValue: number;
 }
 
-const ResultPage: FC<ResultPageProps> = ({ result, isLoading }) => {
+const ResultPage: FC<ResultPageProps> = ({
+  result,
+  isLoading,
+  sliderValue,
+}) => {
   const navigate = useNavigate();
-  const skeleton = Array.from(new Array(10)).map((index) => (
+  const skeleton = Array.from(new Array(sliderValue)).map((index) => (
     <ResultSkeleton key={index} />
   ));
 
