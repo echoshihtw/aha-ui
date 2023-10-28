@@ -4,4 +4,5 @@ export interface Page {
   pageTitle: string;
   icon: ReactNode;
   route: string;
+  notification: boolean;
 }

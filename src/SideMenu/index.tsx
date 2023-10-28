@@ -5,8 +5,18 @@ import { LeftArrow, MenuItemIcon } from '../assets/customIcon';
 import { Page } from './interfaces/page.interface';
 
 export const pages: Array<Page> = [
-  { pageTitle: 'Home', icon: <MenuItemIcon />, route: '/' },
-  { pageTitle: 'TagPage', icon: <MenuItemIcon />, route: '/tags' },
+  {
+    pageTitle: 'Home',
+    icon: <MenuItemIcon />,
+    route: '/',
+    notification: false,
+  },
+  {
+    pageTitle: 'Tags',
+    icon: <MenuItemIcon />,
+    route: '/tags',
+    notification: true,
+  },
 ];
 
 const SideMenu = () => {
@@ -18,17 +28,6 @@ const SideMenu = () => {
   );
   return (
     <>
-      <nav className="xs:hidden sm:flex flex-col gap-2 items-center h-screen w-full sm:w-[80px] bg-background-light ">
-        <div className="w-[80px] h-[88px] grid place-items-center">
-          <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] tracking-[-0.65px]">
-            LOGO
-          </div>
-        </div>
-        {pages.map((page, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <SideMenuItem key={`${index}-${page.pageTitle}`} page={page} />
-        ))}
-      </nav>
       <div className="sm:hidden">
         <section className="h-[70px] w-full">
           {isHomePage && (
@@ -54,6 +53,19 @@ const SideMenu = () => {
           )}
         </section>
       </div>
+      <nav className="xs:hidden sm:flex flex-col items-center h-screen w-full sm:w-[80px] bg-background-light ">
+        <div className="w-[80px] h-[88px] grid place-items-center">
+          <div className="bg-clip-text text-transparent bg-gradient-to-l from-[#FFD25F] to-[#FF5C01] font-bold text-[13px] tracking-[-0.65px] leading-normal">
+            LOGO
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 mt-1">
+          {pages.map((page, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <SideMenuItem key={`${index}-${page.pageTitle}`} page={page} />
+          ))}
+        </div>
+      </nav>
     </>
   );
 };
