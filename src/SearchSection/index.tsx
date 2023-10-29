@@ -50,9 +50,10 @@ const SearchSection = () => {
     },
     [handleSearchClick],
   );
+  const searchMode = keywordFromUrl === null;
   return (
     <div className="w-full min-h-[calc(100vh-70px)] flex justify-between">
-      {keywordFromUrl === null ? (
+      {searchMode ? (
         <SearchPage
           keyword={keyword}
           onEnterInput={handleEnterInput}

@@ -7,6 +7,11 @@ interface ProfileItemProps {
 
 const ProfileItem: FC<ProfileItemProps> = ({ user }) => {
   const { username, name, avater, isFollowing } = user;
+  const buttonClassName: string = `flex justify-center items-center py-2 px-2.5 capitalize rounded-full border border-white font-semibold ${
+    isFollowing ? 'bg-white text-dark' : 'border-white text-white'
+  }`;
+  const buttonText: string = isFollowing ? 'following' : 'follow';
+  const displayUserName: string = `@${username}`;
   return (
     <div className="w-full flex justify-between items-center">
       <div className="flex gap-[15px] items-center">
@@ -20,18 +25,13 @@ const ProfileItem: FC<ProfileItemProps> = ({ user }) => {
             <p className="text-ellipsis overflow-hidden">{name}</p>
           </div>
           <span className="text-grey-500 text-body2 font-normal lowercase text-ellipsis overflow-hidden">
-            @{username}
+            {displayUserName}
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        className={`flex justify-center items-center py-2 px-2.5 capitalize rounded-full border border-white font-semibold ${
-          isFollowing ? 'bg-white text-dark' : 'border-white text-white'
-        }`}
-      >
+      <button type="button" className={buttonClassName}>
         <span className="text-[12px] leading-[12px] h-[13px]">
-          {isFollowing ? 'following' : 'follow'}
+          {buttonText}
         </span>
       </button>
     </div>

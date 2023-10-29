@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import ProfileItem from './ProfileItem';
 import { GET } from '../utils/request';
 import { Profile } from './interfaces/profile.interface';
@@ -6,7 +6,7 @@ import ProfileItemSkeleton from './ProfileItemSkeleton';
 
 const FOLLOWERS = 0;
 const FOLLOWING = 1;
-const profileIndex: Array<{ title: string; index: number }> = [
+const friendsTabs: Array<{ title: string; index: number }> = [
   {
     title: 'Followers',
     index: FOLLOWERS,
@@ -36,25 +36,32 @@ const Friends = () => {
     });
   }, [selected, setList]);
 
+  const handleSwitchTab = useCallback((index: number): void => {
+    setIsLoading(true);
+    setSelected(index);
+  }, []);
+
   return (
     <div className="hidden lg:block bg-background-light w-[375px] h-screen pt-8 overflow-y-scroll">
       <div className="tabs">
-        {profileIndex.map((item) => (
-          <button
-            type="button"
-            key={item.index}
-            onClick={() => {
-              setIsLoading(true);
-              setSelected(item.index);
-            }}
-            className={`w-1/2 font-bold hover:cursor-pointer text-subtitle text-grey-500 pb-[8px] ${
-              selected === item.index &&
-              'text-white border-solid border-b-2 border-white'
-            }`}
-          >
-            <span className="">{item.title}</span>
-          </button>
-        ))}
+        {friendsTabs.map((item) => {
+          const { title, index } = item;
+          const tabClassName = `w-1/2 font-bold hover:cursor-pointer text-subtitle text-grey-500 pb-[8px] ${
+            selected === index &&
+            'text-white border-solid border-b-2 border-white'
+          }`;
+          return (
+            <button
+              type="button"
+              key={index}
+              id={index.toString()}
+              onClick={() => handleSwitchTab(index)}
+              className={tabClassName}
+            >
+              <span className="">{title}</span>
+            </button>
+          );
+        })}
       </div>
       <div className="flex gap-4 flex-col px-4 py-8 min-h-[500px]">
         {isLoading ? (

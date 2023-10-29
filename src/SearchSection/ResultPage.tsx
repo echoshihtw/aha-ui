@@ -17,9 +17,10 @@ const ResultPage: FC<ResultPageProps> = ({
   sliderValue,
 }) => {
   const navigate = useNavigate();
-  const skeleton = Array.from(new Array(sliderValue)).map((index) => (
-    <ResultSkeleton key={index} />
-  ));
+  const fixedSliderValue = sliderValue === 75.2 && 30;
+  const skeleton = Array.from(new Array(fixedSliderValue || sliderValue)).map(
+    (index) => <ResultSkeleton key={index} />,
+  );
 
   const results =
     result.length > 0 &&
@@ -28,6 +29,8 @@ const ResultPage: FC<ResultPageProps> = ({
   const handleGoToLastPage = useCallback(() => {
     navigate(-1);
   }, [navigate]);
+
+  const hasResult = result.length !== 0;
 
   return (
     <div className="w-full h-screen sm:h-full py-5 sm:py-[92px]">
@@ -43,7 +46,7 @@ const ResultPage: FC<ResultPageProps> = ({
         results
       </div>
       <div className="w-full p-5 sm:px-[130px]">
-        {result.length === 0 && <div>no result</div>}
+        {!hasResult && <div>no result</div>}
         <div className="grid sm:grid-cols-[repeat(auto-fill,_minmax(0,_219px))] gap-10 sm:gap-x-[34px] sm:gap-y-[31px] pt-[24px]">
           {isLoading ? skeleton : results}
         </div>

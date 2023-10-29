@@ -13,8 +13,9 @@ const SideMenuItem: FC<SideMenuItemProps> = ({ page }) => {
   const location = useLocation();
 
   const { pageTitle, icon, route, notification } = page;
-  const isUserHere = location?.pathname === route;
-  const iconClassName = isUserHere ? 'text-white' : 'text-grey-600';
+  const isUserHere: boolean = location?.pathname === route;
+  const iconClassName: string = isUserHere ? 'text-white' : 'text-grey-600';
+  const showNotification: boolean = !isUserHere && notification;
   if (!page) {
     return null;
   }
@@ -25,14 +26,14 @@ const SideMenuItem: FC<SideMenuItemProps> = ({ page }) => {
     >
       <div className="flex flex-col items-center justify-center pl-[1px]">
         <div className="relative">
-          {!isUserHere && notification && (
+          {showNotification && (
             <span className="text-primary-light absolute top-[-4.5px] right-[-3px]">
               <Ellipse />
             </span>
           )}
           <div className={iconClassName}>{icon}</div>
         </div>
-        {location?.pathname === route && (
+        {isUserHere && (
           <span className="text-white capitalize hidden font-normal text-caption sm:block">
             {pageTitle}
           </span>

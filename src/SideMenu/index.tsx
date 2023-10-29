@@ -1,20 +1,21 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SideMenuItem from './SideMenuItem';
 import { LeftArrow, MenuItemIcon } from '../assets/customIcon';
 import { Page } from './interfaces/page.interface';
+import Routes from '../Routes';
 
 export const pages: Array<Page> = [
   {
     pageTitle: 'Home',
     icon: <MenuItemIcon />,
-    route: '/',
+    route: Routes.home,
     notification: false,
   },
   {
     pageTitle: 'Tags',
     icon: <MenuItemIcon />,
-    route: '/tags',
+    route: Routes.tagPage,
     notification: true,
   },
 ];
@@ -22,10 +23,13 @@ export const pages: Array<Page> = [
 const SideMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = useMemo(
-    () => location.pathname === '/' && location.search === '',
+  const isHomePage: boolean = useMemo(
+    () => location.pathname === Routes.home && location.search === '',
     [location],
   );
+
+  const handleGoToHome = useCallback(() => navigate(Routes.home), []);
+
   return (
     <>
       <div className="sm:hidden">
@@ -41,7 +45,7 @@ const SideMenu = () => {
             <div className="flex gap-[13.16px] pl-[19px] pt-[17px] ">
               <button
                 className="text-h4"
-                onClick={() => navigate('/')}
+                onClick={handleGoToHome}
                 type="button"
               >
                 <LeftArrow />

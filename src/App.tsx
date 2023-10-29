@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AllRoutes from './Routes';
 
 import Home from './Home';
 import SideMenu from './SideMenu';
@@ -10,8 +11,8 @@ const App = () => (
     <BrowserRouter>
       <SideMenu />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/tags" element={<TagPage />} />
+        <Route path={AllRoutes.home} element={<Home />} />
+        <Route path={AllRoutes.tagPage} element={<TagPage />} />
       </Routes>
     </BrowserRouter>
   </div>
