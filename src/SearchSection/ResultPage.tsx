@@ -49,7 +49,7 @@ const ResultPage: FC<ResultPageProps> = ({
       <div className="px-5 sm:hidden text-h5 text-white capitalize">
         results
       </div>
-      <div className="w-full p-5 sm:px-[130px] sm:pt-0 sm:pb-10">
+      <div className="w-full px-5 sm:px-[130px] sm:pt-0 sm:pb-10">
         {!hasResult && <div>no result</div>}
         <div className="sm:h-[672px] mt-[24px] overflow-y-scroll">
           <div className="grid sm:grid-cols-[repeat(auto-fill,_minmax(0,_219px))] gap-10 sm:gap-x-[34px] sm:gap-y-[31px]">

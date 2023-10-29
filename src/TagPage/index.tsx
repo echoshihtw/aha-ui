@@ -17,7 +17,7 @@ const TagPage = () => {
   }, [setTags]);
   return (
     <div className="w-full h-full sm:pt-[80px] bg-background-main">
-      <div className="px-5 pt-5 sm:pt-0 sm:px-[257px] text-h4 text-white">
+      <div className="px-5 pt-5 sm:pt-0 sm:px-[257px] text-h5 sm:text-h4 text-white">
         Tags
       </div>
       <div className="w-full grid items-center">

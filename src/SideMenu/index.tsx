@@ -50,7 +50,7 @@ const SideMenu = () => {
               >
                 <LeftArrow />
               </button>
-              <span className="text-h4 text-white capitalize font-normal">
+              <span className="text-h5 sm:text-h4 text-white capitalize font-normal">
                 home page
               </span>
             </div>
