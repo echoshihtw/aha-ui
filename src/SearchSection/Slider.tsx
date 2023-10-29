@@ -23,6 +23,7 @@ const OrangeSlider = styled(Slider)({
     width: '26px',
     backgroundColor: 'black',
     border: '6px solid #FFD25F',
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
       boxShadow: 'inherit',
