@@ -40,8 +40,10 @@ module.exports = {
     'import/no-named-as-default': 0,
     'import/no-unresolved': 2,
     'object-curly-newline': 0,
-    indent: 'off',
-    '@typescript-eslint/indent': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-first-prop-new-line': [2, 'multiline'],
+    indent: 0,
+    '@typescript-eslint/indent': 0,
     quotes: [0, 'double'],
     'react/function-component-definition': [
       1,
