@@ -8,7 +8,7 @@ const Tag: FC<TagProps> = ({ name, count }) => {
     <div className="w-[150px]">
       <div className="h-[150px] relative">
         <Square />
-        <div className="border-4 border-white absolute bottom-[14px] left-[10px] right-[10px] rounded-lg whitespace-nowrap text-ellipsis overflow-hidden text-h5 text-white px-[14px] py-[7px] font-bold">
+        <div className="border-4 border-white absolute bottom-[14px] leading-[36px] left-[10px] right-[10px] rounded-lg whitespace-nowrap text-ellipsis overflow-hidden text-h5 text-white px-[14px] py-[3px] font-bold">
           {name}
         </div>
       </div>
