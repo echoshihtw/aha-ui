@@ -7,7 +7,7 @@ import SideMenu from './SideMenu';
 import TagPage from './TagPage';
 
 const App = () => (
-  <div className="w-screen min-h-screen sm:w-full flex xs:flex-col sm:flex-row sm:justify-between bg-background-main xs:overflow-y-scroll">
+  <div className="w-screen h-screen sm:w-full flex xs:flex-col sm:flex-row sm:justify-between bg-background-main overflow-y-scroll sm:overflow-y-hidden">
     <BrowserRouter>
       <SideMenu />
       <Routes>
