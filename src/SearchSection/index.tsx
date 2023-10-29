@@ -18,17 +18,19 @@ const SearchSection = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const params = new URLSearchParams(document.location.search);
+  let pageNumberFromUrl = params.get('page') ? Number(params.get('page')) : 1;
   const keywordFromUrl = params.get('keyword');
   const navigate = useNavigate();
 
   useEffect(() => {
+    const pageSize = sliderValue === 75.2 ? 30 : sliderValue;
     GET(
-      `https://avl-frontend-exam.herokuapp.com/api/users/all?page=1&pageSize=${sliderValue}&keyword=${keyword}`,
+      `https://avl-frontend-exam.herokuapp.com/api/users/all?page=${pageNumberFromUrl}&pageSize=${pageSize}&keyword=${keyword}`,
     ).then((r) => {
       setResult(r.data);
       setIsLoading(false);
     });
-  }, [keyword, sliderValue, setResult]);
+  }, [keyword, sliderValue, pageNumberFromUrl, setResult]);
 
   const handleEnterInput = useCallback(
     (e: ChangeEvent) => {
@@ -41,6 +43,12 @@ const SearchSection = () => {
     if (keyword === '') return;
     navigate(`?keyword=${keyword}`, { state: 'search' });
   }, [navigate, keyword]);
+
+  const handleLoadNextPage = useCallback(() => {
+    navigate(`?keyword=${keyword}&page=${(pageNumberFromUrl += 1)}`, {
+      state: 'search',
+    });
+  }, [navigate, keyword, pageNumberFromUrl]);
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLElement>) => {
@@ -67,6 +75,7 @@ const SearchSection = () => {
           result={result}
           isLoading={isLoading}
           sliderValue={sliderValue}
+          onLoadNextPage={handleLoadNextPage}
         />
       )}
     </div>
