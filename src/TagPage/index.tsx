@@ -21,14 +21,16 @@ const TagPage = () => {
         Tags
       </div>
       <div className="w-full grid items-center">
-        <div className="px-[25px] sm:px-[257px] w-fit grid items-center grid-cols-[repeat(2,_150px)] sm:grid-cols-[repeat(5,_150px)] gap-[24px] sm:gap-y-[36px] py-[24px] overflow-y-scroll">
-          {isLoading
-            ? Array.from(new Array(20)).map((index) => (
-                <TagSkeleton key={index} />
-              ))
-            : tags?.map((tag) => (
-                <Tag key={tag.id} name={tag.name} count={tag.count} />
-              ))}
+        <div className="w-full grid items-center overflow-y-scroll py-[24px] px-[25px] sm:px-[257px]">
+          <div className="h-[740px] w-fit grid items-center grid-cols-[repeat(2,_150px)] sm:grid-cols-[repeat(5,_150px)] gap-[24px] sm:gap-y-[36px]">
+            {isLoading
+              ? Array.from(new Array(20)).map((index) => (
+                  <TagSkeleton key={index} />
+                ))
+              : tags?.map((tag) => (
+                  <Tag key={tag.id} name={tag.name} count={tag.count} />
+                ))}
+          </div>
         </div>
       </div>
     </div>
