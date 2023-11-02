@@ -1,40 +1,30 @@
 import React, { FC, memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LeftArrow } from '../assets/customIcon';
-import { User } from './interfaces/user.interface';
-import ResultSkeleton from './ResultItemSkeleton';
-import ResultItem from './ResultItem';
+import ScrollContainer from './ScrollContainer';
+import Routes from '../Routes';
+import { User } from './interfaces/user';
 
 interface ResultPageProps {
   result: Array<User>;
   isLoading: boolean;
-  sliderValue: number;
   onLoadNextPage: () => void;
+  error: null | string;
+  handleFetchData: () => void;
 }
 
 const ResultPage: FC<ResultPageProps> = ({
   result,
   isLoading,
-  sliderValue,
   onLoadNextPage,
+  error,
+  handleFetchData,
 }) => {
   const navigate = useNavigate();
-  const fixedSliderValue = sliderValue === 75.2 && 30;
-  const skeleton = Array.from(new Array(fixedSliderValue || sliderValue)).map(
-    (index) => <ResultSkeleton key={index} />,
-  );
-  const firstSixResults =
-    result.length > 0 &&
-    result.slice(0, 6).map((item) => <ResultItem key={item.id} item={item} />);
-  const resultSliceSix =
-    result.length > 0 &&
-    result.slice(6).map((item) => <ResultItem key={item.id} item={item} />);
 
-  const handleGoToLastPage = useCallback(() => {
-    navigate(-1);
+  const handleGoToLastPage = useCallback((): void => {
+    navigate(Routes.home);
   }, [navigate]);
-
-  const hasResult = result.length !== 0;
 
   return (
     <div className="w-full h-screen sm:h-full py-5 sm:py-[92px]">
@@ -50,20 +40,18 @@ const ResultPage: FC<ResultPageProps> = ({
         results
       </div>
       <div className="w-full px-5 sm:px-[130px] sm:pt-0 sm:pb-10">
-        {!hasResult && <div>no result</div>}
-        <div className="sm:h-[672px] mt-[24px] overflow-y-scroll">
-          <div className="grid sm:grid-cols-[repeat(auto-fill,_minmax(0,_219px))] gap-10 sm:gap-x-[34px] sm:gap-y-[31px]">
-            {isLoading ? skeleton : firstSixResults}
-          </div>
-          <div className="grid sm:grid-cols-[repeat(auto-fill,_minmax(0,_219px))] gap-10 sm:gap-x-[34px] sm:gap-y-[31px] pt-[50px]">
-            {!isLoading && resultSliceSix}
-          </div>
-        </div>
+        <ScrollContainer
+          result={result}
+          isLoading={isLoading}
+          error={error}
+          handleFetchData={handleFetchData}
+        />
       </div>
       <button
         onClick={onLoadNextPage}
         type="button"
-        className="flex items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none w-full sm:w-[343px] px-4 py-[13px] mt-20 sm:mt-0 sm:ml-[130px]"
+        disabled={Boolean(error)}
+        className="flex items-center justify-center font-bold bg-white h-10 uppercase rounded text-body2 border-none w-full sm:w-[343px] px-4 py-[13px] mt-20 sm:mt-0 sm:ml-[130px] disabled:cursor-not-allowed"
       >
         more
       </button>

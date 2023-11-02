@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { User } from './interfaces/user.interface';
+import { User } from './interfaces/user';
 
 interface ResultItemProps {
   item: User;
