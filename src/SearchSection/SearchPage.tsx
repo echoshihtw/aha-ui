@@ -20,10 +20,10 @@ const SearchPage: FC<SearchPageProps> = ({
   onSetSliderValue,
   onSearchButtonClick,
 }) => {
-  const fixedDefaultValueForSlider = useMemo(() => {
+  const adjustedValueForSlider: number = useMemo(() => {
     // visually decided each mark is 18.8%
     if (sliderValue === 75.2) {
-      return '30';
+      return 30;
     }
     return sliderValue;
   }, [sliderValue]);
@@ -36,6 +36,7 @@ const SearchPage: FC<SearchPageProps> = ({
             search
           </span>
           <input
+            name="search"
             value={keyword}
             type="text"
             placeholder="Keyword"
@@ -51,7 +52,7 @@ const SearchPage: FC<SearchPageProps> = ({
           </span>
           <div className="flex gap-[10px] items-end mb-[20px] sm:mb-0">
             <span className="leading-[50px] text-h3 font-bold text-white tracking-normal">
-              {fixedDefaultValueForSlider}
+              {adjustedValueForSlider}
             </span>
             <div className="text-white text-subtitle tracking-[0.15px] mb-1">
               results

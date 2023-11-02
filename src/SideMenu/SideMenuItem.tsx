@@ -2,7 +2,7 @@
 
 import React, { FC, memo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Page } from './interfaces/page.interface';
+import { Page } from './interfaces/page';
 import { Ellipse } from '../assets/customIcon';
 
 interface SideMenuItemProps {

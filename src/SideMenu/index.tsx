@@ -2,8 +2,8 @@ import React, { memo, useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SideMenuItem from './SideMenuItem';
 import { LeftArrow, MenuItemIcon } from '../assets/customIcon';
-import { Page } from './interfaces/page.interface';
 import Routes from '../Routes';
+import { Page } from './interfaces/page';
 
 export const pages: Array<Page> = [
   {

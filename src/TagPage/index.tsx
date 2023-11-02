@@ -2,8 +2,8 @@
 import React, { memo, useEffect, useState } from 'react';
 import { GET } from '../utils/request';
 import TagSkeleton from './TagSkeleton';
-import { TagProps } from './interfaces/tags.interface';
 import Tag from './Tag';
+import { TagProps } from './interfaces/tags';
 
 const TagPage = () => {
   const [tags, setTags] = useState<Array<TagProps>>([]);

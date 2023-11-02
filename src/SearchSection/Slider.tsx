@@ -41,9 +41,9 @@ interface SliderProps {
 
 const Slide: FC<SliderProps> = ({ value, onSetSliderValue }) => {
   // visually decided each mark is 18.8%
-  const step = 18.8;
+  const step: number = 18.8;
   const handleChange = useCallback(
-    (_event: Event, scrollbarPercentage: number | number[]) => {
+    (_event: Event, scrollbarPercentage: number | number[]): void => {
       switch (scrollbarPercentage) {
         case 0:
           onSetSliderValue(6 as number);

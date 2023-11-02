@@ -1,6 +1,6 @@
 import React, { FC, memo } from 'react';
 import { Square } from '../assets/customIcon';
-import { TagProps } from './interfaces/tags.interface';
+import { TagProps } from './interfaces/tags';
 
 const Tag: FC<TagProps> = ({ name, count }) => {
   const description = `${count} results`;
