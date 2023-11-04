@@ -3,7 +3,7 @@
 </p>
 
 
-## 🛠 Liberary
+## 🛠 Liberaries
 - [Tailwind](https://tailwindcss.com/)
 - [MUI](https://mui.com/)
 - [react-infinite-scroll-component](https://github.com/ankeetmaini/react-infinite-scroll-component)
