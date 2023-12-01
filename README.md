@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="[https://todo-list-v2-multilingual.vercel.app/](https://aha-ui.vercel.app/)"><img alt="codesandbox" src="https://img.shields.io/badge/open%20in%20Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"></a>  
+  <a href="https://aha-ui.vercel.app/"><img alt="codesandbox" src="https://img.shields.io/badge/open%20in%20Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"></a>  
 </p>
 
 <div align="center">
